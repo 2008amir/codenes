@@ -1,0 +1,458 @@
+/* ==================== THEME VARIABLES ==================== */
+:root{
+  --bg-1: #0f1020;
+  --bg-2: #1b2845;
+  --grad-1: #8e2de2;
+  --grad-2: #4a00e0;
+  --grad-3: #00c6ff;
+  --glass: rgba(255,255,255,.06);
+  --glass-strong: rgba(255,255,255,.12);
+  --text: #EAF0FF;
+  --muted: #C9D4FF;
+  --accent: #8ef6ff;
+  --ok: #7CFFB2;
+  --warn: #FFD27C;
+  --shadow: 0 18px 40px rgba(0,0,0,.35);
+  --radius-xl: 18px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+  --glass-border: rgba(255,255,255,.12);
+  --glass-border-2: rgba(255,255,255,.08);
+}
+
+body.light-theme{
+  --bg-1: #f4f7fb;
+  --bg-2: #e1e7f0;
+  --grad-1: #ff9a9e;
+  --grad-2: #fad0c4;
+  --grad-3: #fbc2eb;
+  --glass: rgba(0,0,0,.06);
+  --glass-strong: rgba(0,0,0,.12);
+  --text: #1a1a1a;
+  --muted: #444;
+  --accent: #0077ff;
+  --ok: #00c853;
+  --warn: #ff9100;
+  --shadow: 0 18px 40px rgba(0,0,0,.12);
+}
+
+/* ==================== GLOBAL ==================== */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(1200px 600px at 10% 10%, rgba(255,255,255,.05), transparent 60%),
+    radial-gradient(900px 400px at 90% 10%, rgba(255,255,255,.03), transparent 60%),
+    linear-gradient(135deg, var(--bg-1), var(--bg-2));
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
+  transition: background .45s ease, color .35s ease;
+}
+
+/* ==================== BACKGROUND BLOBS (OPTIONAL) ==================== */
+.blob{position:fixed; filter:blur(80px); opacity:.5; z-index:-1; transform:translateZ(0); pointer-events:none}
+.b1{top:-14vh; left:-8vw; width:60vmax; height:60vmax; background:radial-gradient(circle at 30% 30%, var(--grad-1), transparent 60%)}
+.b2{bottom:-18vh; right:-14vw; width:55vmax; height:55vmax; background:radial-gradient(circle at 70% 70%, var(--grad-3), transparent 60%)}
+.b3{top:18vh; right:22vw; width:40vmax; height:40vmax; background:radial-gradient(circle at 50% 50%, var(--grad-2), transparent 60%)}
+
+/* ==================== HEADER / NAV ==================== */
+header{
+  position: fixed;
+  top:0;
+  z-index:40;
+  display:;
+  align-items:center;
+  justify-content:space-between;
+  width:100%;
+  padding:clamp(14px, 2.2vw, 28px);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-bottom: 1px solid var(--glass-border-2);
+  backdrop-filter: blur(8px);
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:.6rem;
+  font-weight:800;
+  font-size:1.25rem;
+  letter-spacing:.2px;
+}
+
+/* small logo accent circle */
+.logo::before{
+  content:"";
+  width:14px; height:30px; border-radius:4px;
+  background: linear-gradient(90deg,#ff1515,#ff1515,#ff5540,#ffa995,#ff5f55,#ff2b35,#ff6a94);
+
+  box-shadow: 0 6px 18px rgba(0,0,0,.25);
+}
+
+/* NAV */
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:1px;
+  align-items:center;
+  margin:0;
+  padding:0;
+}
+nav a{
+  color:var(--muted);
+  text-decoration:none;
+  font-weight:600;
+  padding:8px 12px;
+  border-radius:10px;
+  
+  display:inline-block;
+}
+nav a:hover{ color:var(--text);  }
+nav a.active{
+  color:#081018;
+  
+  box-shadow:0 10px 28px rgba(0,0,0,.28);
+  border:1px solid rgba(255,255,255,.22);
+}
+
+/* small utility - theme toggle if used */
+.theme-toggle{
+  margin-left:10px;
+  padding:8px 12px;
+  border-radius:12px;
+  background:var(--glass);
+  border:1px solid var(--glass-border);
+  color:var(--text);
+  cursor:pointer;
+  font-weight:600;
+}
+
+/* ==================== HERO ==================== */
+.hero{
+  display:flex;
+  gap:2.4rem;
+  align-items:center;
+  justify-content:center;
+  padding: clamp(48px, 8vw, 110px) 4vw;
+  text-align:center;
+  position:relative;
+}
+
+.hero .hero-content{
+  max-width:720px;
+  z-index:2;
+}
+
+.hero h1{
+  margin:0 0 .6rem 0;
+  font-weight:900;
+  line-height:1.03;
+  font-size: clamp(32px, 6.8vw, 64px);
+  background: linear-gradient(90deg,#ff1515,#ff1515,#ff5540,#ffa995,#ff5f55,#ff2b35,#ff6a94);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:0 10px 30px rgba(0,0,0,.32);
+}
+
+.hero p{
+  margin:0 auto 1.25rem;
+  color:var(--muted);
+  font-size: clamp(15px, 1.6vw, 18px);
+  max-width: 56ch;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:.6rem;
+  padding:12px 18px;
+  border-radius:14px;
+  
+  color:#081018;
+  font-weight:800;
+
+  box-shadow: 0 14px 30px rgba(0,0,0,.25);
+  text-decoration:none;
+  transition: transform .16s ease,box-shadow .16s ease;
+}
+.btn:hover{ transform:translateY(-4px); box-shadow:0 22px 44px rgba(0,0,0,.32) }
+
+.hero .hero-image{
+  max-width:520px;
+  width:40%;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow: 0 30px 60px rgba(0,0,0,.35);
+  transform: translateZ(0);
+}
+.hero .hero-image img{
+  width:100%;
+  height:auto;
+  display:block;
+  object-fit:cover;
+  vertical-align:middle;
+}
+
+/* ==================== ABOUT ==================== */
+.about{
+  padding: clamp(28px, 5vw, 64px) 4vw;
+}
+.about h2{
+  text-align:center;
+  font-size:clamp(20px, 3.2vw, 32px);
+  margin:0 0 .85rem 0;
+  color:var(--text);
+}
+.about .about-container{
+  display:flex;
+  gap:2rem;
+  align-items:center;
+  justify-content:space-between;
+  margin-top:1.25rem;
+  flex-wrap:wrap;
+}
+.about-text{ max-width:640px; }
+.about-text p{ color:var(--muted); margin-bottom:.9rem; line-height:1.6; }
+.about-image{ flex:0 0 420px; border-radius:14px; overflow:hidden; box-shadow: var(--shadow) }
+.about-image img{ width:100%; display:block; }
+
+/* ==================== COURSES (glass cards grid) ==================== */
+.courses{
+  padding: clamp(36px, 6vw, 84px) 4vw;
+}
+.courses h2{ text-align:center; margin:0 0 1rem 0; font-size:clamp(22px,3vw,34px) }
+.courses p{ text-align:center; color:var(--muted); margin-bottom:2rem }
+
+/* responsive grid using minmax */
+.course-container{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap:20px;
+  align-items:start;
+}
+
+/* each course card */
+.course-card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  border:1px solid var(--glass-border);
+  border-radius:16px;
+  padding:16px;
+  transition: transform .35s cubic-bezier(.2,.9,.3,1), box-shadow .25s;
+  box-shadow: 0 16px 35px rgba(0,0,0,.28);
+  display:flex;
+  flex-direction:column;
+  gap:.75rem;
+  min-height:320px;
+}
+.course-card:hover{ transform: translateY(-10px); box-shadow: 0 30px 60px rgba(0,0,0,.4) }
+
+.course-card img{
+  width:100%; height:140px; object-fit:cover; border-radius:12px;
+  border:1px solid var(--glass-border-2);
+}
+.course-card h3{ margin:0; font-size:1.05rem; color:var(--text) }
+.course-card p{ color:var(--muted); font-size:.95rem; line-height:1.45; flex:1 }
+.course-card .btn-small{
+  display:inline-block; align-self:flex-start;
+  padding:8px 12px; border-radius:12px;
+  
+  color:#081018; font-weight:700; text-decoration:none;
+   box-shadow: 0 10px 28px rgba(0,0,0,.18);
+  transition: transform .12s, box-shadow .12s;
+}
+.course-card .btn-small:hover{ transform: translateY(-4px); box-shadow:0 18px 40px rgba(0,0,0,.28) }
+
+/* ==================== GALLERY ==================== */
+.gallery{
+  padding: clamp(28px, 5vw, 64px) 4vw;
+}
+.gallery h2{ text-align:center; margin-bottom:1rem }
+.gallery-grid{
+  display:grid;
+  gap:14px;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+.gallery-grid img{
+  width:100%;
+  height:160px;
+  object-fit:cover;
+  border-radius:12px;
+  transition: transform .45s cubic-bezier(.2,.9,.3,1), box-shadow .3s;
+  border:1px solid var(--glass-border-2);
+}
+.gallery-grid img:hover{ transform:scale(1.06); box-shadow:0 20px 50px rgba(0,0,0,.32) }
+
+/* ==================== TESTIMONIALS ==================== */
+.testimonials{
+  padding: clamp(28px, 5vw, 64px) 4vw;
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+}
+.testimonials h2{ text-align:center; margin-bottom:1rem }
+.testimonial-container{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap:18px;
+}
+.testimonial-card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  border-radius:14px;
+  padding:18px;
+  border:1px solid var(--glass-border);
+  box-shadow: 0 18px 40px rgba(0,0,0,.22);
+  transition: transform .25s, box-shadow .25s;
+}
+.testimonial-card:hover{ transform:translateY(-6px); box-shadow:0 26px 60px rgba(0,0,0,.28) }
+.testimonial-card p{ color:var(--muted); margin-bottom:10px; font-style:italic }
+.testimonial-card h4{ margin:0; color:#ff9340; font-weight:700 }
+
+/* ==================== CONTACT FORM ==================== */
+.contact{
+  padding: clamp(28px, 5vw, 64px) 4vw;
+}
+#contact-form{
+  max-width:720px;
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+#contact-form input,
+#contact-form textarea{
+  padding:14px 16px;
+  border-radius:12px;
+  border:1px solid var(--glass-border-2);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  color:var(--text);
+  resize:vertical;
+  font-size:1rem;
+  outline:none;
+  transition: box-shadow .14s, transform .14s;
+}
+#contact-form input:focus,
+#contact-form textarea:focus{
+  box-shadow: 0 10px 30px rgba(0,0,0,.18);
+  transform: translateY(-2px);
+}
+#contact-form button{
+  align-self:flex-start;
+  padding:12px 18px;
+  border-radius:12px;
+  color:#081018;
+  border-left: 0.01px solid rgba(255,255,255,.18);
+  border-right: 0.01px solid rgba(255,255,255,.18);
+  border-top: 0.01px solid rgba(255,255,255,.18);
+  font-weight:800;
+  cursor:pointer;
+  box-shadow:0 12px 30px rgba(0,0,0,.2);
+  transition: transform .14s, box-shadow .14s;
+}
+#contact-form button:hover{ transform:translateY(-4px); box-shadow:0 20px 44px rgba(0,0,0,.28) }
+
+/* ==================== FOOTER ==================== */
+footer{
+  padding:28px 4vw;
+  text-align:center;
+  color:var(--muted);
+  border-top:1px solid var(--glass-border-2);
+  background: linear-gradient(180deg, rgba(0,0,0,.02), transparent);
+}
+
+/* ==================== SMALL UTILITIES ==================== */
+.center{text-align:center}
+.kicker{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.04);border:1px solid var(--glass-border); color:var(--muted); font-weight:700}
+
+/* ==================== ANIMATIONS ==================== */
+@keyframes floatUp{
+  0%{ transform: translateY(0); }
+  50%{ transform: translateY(-6px); }
+  100%{ transform: translateY(0); }
+}
+.btn, .course-card, .testimonial-card{ will-change: transform }
+
+/* ==================== ACTIVE LINK STYLING (JS adds .active) ==================== */
+nav a.active{
+  box-shadow: 0 12px 34px rgba(0,0,0,.28);
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width:980px){
+  .hero{ padding: clamp(36px, 8vw, 64px) 4vw; flex-direction:column; text-align:center }
+  .hero .hero-image{ width:88%; max-width:520px }
+  .about .about-container{ flex-direction:column-reverse; gap:18px }
+  .about-image{ width:100% }
+  .logo{ font-size:1.05rem }
+  nav ul{ gap:12px }
+}bt
+
+@media (max-width:560px){
+  nav{ display:flex; gap:10px }
+  nav ul{ gap:10px; font-size:.92rem }
+  .course-card{ min-height: auto }
+  .gallery-grid img{ height:140px }
+  .testimonial-card{ padding:14px }
+}
+/* Make all anchor links use gradient text like headers */
+.btn, .btn-small, #nav, button {
+  background: linear-gradient(90deg,#ff1515,#ff1515,#ff5540,#ffa995,#ff5f55,#ff2b35,#ff6a94);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: none;
+  font-weight: 1300;
+  font-size: 1.1pc;
+  transition: opacity .2s ease;
+  border-bottom: 3px solid #ff1515;
+}
+
+a:hover {
+  opacity: 0.75;
+}
+
+/* For nav active link (override background) */
+nav #nav.active {
+  background: linear-gradient(90deg,#ff1515,#ff1515,#ff5540,#ffa995,#ff5f55,#ff2b35,#ff6a94);
+  -webkit-text-fill-color: white;
+  font-weight: 700;
+  border-bottom: 2px solid #C38F74; /* thin underline for highlight */
+  box-shadow: none;
+}
+#atag{
+    color: red;
+}
+#png{
+    width: 40px;
+}
+#atag {
+    position: relative;
+    top: 2px;
+    left: -6px;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    filter: grayscale(100%);
+    border-radius: 10px;
+}
+#at {
+position: relative;
+left: 40px;
+margin: 7px;
+    width: 3pc;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(90deg,#ff1515,#ff1515,#ff5540,#ffa995,#ff5f55,#ff2b35,#ff6a94);
+    border-radius: 10px;
+    
+}
+#dtag {
+    grid-row-gap: 200px;
+    display: flex;
+}
+hr {
+    height: 3px;
+    background-color: #ff352b;
+    outline: none;
+    border: transparent;
+}
